@@ -2,20 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.lenguajes.caso1;
+package Logic;
 
 /**
  *
  * @author Luan Valverde
  */
 
-public class User {
+public class Account {
     private String username;
     private String password;
+    private int id;
+    private static int consecutive = 0;
 
-    public User(String username, String password) {
+    public Account(String username, String password) {
         this.username = username;
         this.password = password;
+        id = consecutive++;
     }
 
     public String getUsername() {
