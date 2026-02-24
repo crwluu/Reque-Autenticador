@@ -7,6 +7,7 @@ import Exceptions.AccountExistsException;
 import Exceptions.AccountNotFoundException;
 import Logic.Account;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -20,7 +21,7 @@ public class Controller {
         this.accounts = new ArrayList<Account>();
     }
     
-    private Account getAccountByAccountname(String username) throws AccountNotFoundException {
+    private Account getAccountByUsername(String username) throws AccountNotFoundException {
         for (Account a : accounts) {
             if (a.getUsername().equals(username)) {
                 return a;
@@ -40,7 +41,7 @@ public class Controller {
         return accounts;
     }
     
-    public void addAccount(String username, String password) throws AccountExistsException {
+    public void addAccount(String username, char[] password) throws AccountExistsException {
         if (accountExists(username)) {
             throw new AccountExistsException();
         }
@@ -56,8 +57,8 @@ public class Controller {
         return false;
     }
     
-    public boolean isAccountInformationCorrect(String username, String password) throws AccountNotFoundException {
-        Account u = getAccountByAccountname(username);
-        return u.getPassword().equals(password);
+    public boolean isAccountInformationCorrect(String username, char[] password) throws AccountNotFoundException {
+        Account a = getAccountByUsername(username);
+        return Arrays.equals(a.getPassword(), password);
     }
 }

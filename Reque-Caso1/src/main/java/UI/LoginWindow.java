@@ -142,7 +142,7 @@ public class LoginWindow extends javax.swing.JFrame {
         char[] password = passwordField.getPassword();
         Controller c = Controller.getInstance();
         try {
-            if (c.isAccountInformationCorrect(username, password.toString())) {
+            if (c.isAccountInformationCorrect(username, password)) {
                 JOptionPane.showMessageDialog(this, "Logged in successfully.");
             } else {
                 JOptionPane.showMessageDialog(this, "The given information is incorrect.");

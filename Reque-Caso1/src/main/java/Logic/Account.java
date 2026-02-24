@@ -11,11 +11,11 @@ package Logic;
 
 public class Account {
     private String username;
-    private String password;
+    private char[] password;
     private int id;
     private static int consecutive = 0;
 
-    public Account(String username, String password) {
+    public Account(String username, char[] password) {
         this.username = username;
         this.password = password;
         id = consecutive++;
@@ -29,11 +29,11 @@ public class Account {
         this.username = username;
     }
 
-    public String getPassword() {
+    public char[] getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(char[] password) {
         this.password = password;
     }
     

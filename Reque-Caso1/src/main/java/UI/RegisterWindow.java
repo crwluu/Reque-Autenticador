@@ -135,7 +135,7 @@ public class RegisterWindow extends javax.swing.JFrame {
 
     private void createAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountButtonActionPerformed
         String username = usernameField.getText();
-        String password = passwordField.getPassword().toString();
+        char[] password = passwordField.getPassword().clone();
         Controller c = Controller.getInstance();
         try {
             c.addAccount(username, password);
