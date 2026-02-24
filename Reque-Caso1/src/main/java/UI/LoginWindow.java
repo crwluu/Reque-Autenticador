@@ -80,12 +80,12 @@ public class LoginWindow extends javax.swing.JFrame {
         });
 
         accountRecoveryLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        accountRecoveryLabel.setText("Forgot password?");
+        accountRecoveryLabel.setText("Can't log in?");
         accountRecoveryLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jLabel2.setText("username");
+        jLabel2.setText("Username");
 
-        jLabel3.setText("password");
+        jLabel3.setText("Password");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

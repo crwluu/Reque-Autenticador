@@ -75,13 +75,11 @@ public class RegisterWindow extends javax.swing.JFrame {
         createAccountButton.setText("Create Account");
         createAccountButton.addActionListener(this::createAccountButtonActionPerformed);
 
-        emailField.setText("jTextField1");
+        jLabel2.setText("Username");
 
-        jLabel2.setText("username");
+        jLabel1.setText("Email");
 
-        jLabel1.setText("email");
-
-        jLabel3.setText("password");
+        jLabel3.setText("Password");
 
         passwordField.setText("jPasswordField1");
 
