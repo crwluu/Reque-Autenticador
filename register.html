@@ -6,15 +6,18 @@
     <div class="card">
         <h1>Register</h1>
         <p>Create an account.</p>
-        <input placeholder="Full name"><br>
-        <input placeholder="Username"><br>
-        <input placeholder="E-mail"><br>
-        <input placeholder="Password"><br>
+        <input id="fullname" placeholder="Full name"><br>
+        <input id="username" placeholder="Username"><br>
+        <input id="email" placeholder="E-mail"><br>
+        <input id="password" type="password" placeholder="Password"><br>
         <a href="index.html">
             <button class="hollow_button">Cancel</button><br>
         </a>
         <a href="index.html">
-            <button>Create Account</button><br>
+           <button id="registerButton">Create Account</button><br>
         </a>
     </div>
 </html>
+
+<script src="Controller/controller.js"></script>
+<script src="Logic/register.js"></script>
