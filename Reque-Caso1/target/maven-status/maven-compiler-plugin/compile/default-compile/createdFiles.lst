@@ -1,7 +1,0 @@
-UI/LoginWindow$1.class
-Control/Controller.class
-Logic/Account.class
-UI/RegisterWindow.class
-Exceptions/AccountNotFoundException.class
-Exceptions/AccountExistsException.class
-UI/LoginWindow.class
