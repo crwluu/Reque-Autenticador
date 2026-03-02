@@ -2,36 +2,54 @@ html {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f9f9f9;
     font-size: 14px;
+    align-content: center;
 }
 
 .card {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 512px;
-    height: 413px;
+    align-content: center;
+    width: 420px;
+    height: fit-content;
     border-radius: 8px;
     background-color: #f9f9f9;
     box-shadow: 0px 2px 8px #0000006d;
+    margin: auto;
+    box-sizing: border-box;
+    padding: 12px 56px;
+    align-content: center;
+}
+
+a {
+    color: #275db2;;
 }
 
 h1 {
     margin-bottom: 12px;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 26px;
 }
 
 input {
-    margin-bottom: 8px;
+    border: 0px;
+    box-shadow: 0px  1px 3px #0000006d;
+    width: auto;
+    height: 24px;
+    margin-top: 8px;
 }
 
 button {
     border: 0cm;
     background-color: #275db2;
+    box-shadow: 0px  0px 2px #0000006d;
     color: #f9f9f9;
-    font-size: large;
+    font-weight: light;
     border-radius: 4px;
-    width: 128px;
-    height: 32px;
+    width: 256px;
+    height: auto;
+    padding: 8px;
+    margin: 8px;
+}
+
+.hollow_button {
+    background-color: #f9f9f9;
+    color: #275db2;
 }
