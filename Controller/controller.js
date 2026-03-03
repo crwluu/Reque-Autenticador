@@ -54,6 +54,7 @@ class Controller {
     constructor() {
         if (Controller.instance) return Controller.instance;
         this.accounts = [];
+        this.loadAccounts(); // cargar datos
         Controller.instance = this;
     }
 
@@ -61,6 +62,27 @@ class Controller {
     static getInstance() {
         if (!Controller.instance) Controller.instance = new Controller();
         return Controller.instance;
+    }
+
+    // guardar sesion
+    setCurrentUser(email) {
+        localStorage.setItem("currentUser", email);
+    }
+
+    // cerrar sesion
+    logout() {
+        localStorage.removeItem("currentUser");
+    }
+
+    // obtener usuario activo
+    getCurrentUser() {
+        const email = localStorage.getItem("currentUser");
+        if (!email) return null;
+        if (this.accountExists(email)) {
+            return this.getAccountByEmail(email);
+        } else {
+            return null;
+        }
     }
 
     // devuelve todas las cuentas
@@ -78,6 +100,7 @@ class Controller {
         if (this.accountExists(email)) throw new AccountExistsException();
         const account = new Account(name, email, password);
         this.accounts.push(account);
+        this.saveAccounts(); // guardar
     }
 
     // comprobar que existe el email
@@ -104,8 +127,28 @@ class Controller {
 
         return account;
     }
+
+    // convierte el array con cuentas a un string que se guarda en local storage
+    saveAccounts() {
+        const data = this.accounts.map(a => ({
+            name: a.getName(),
+            email: a.getEmail(),
+            password: a.getPassword()
+        }));
+        localStorage.setItem("accounts", JSON.stringify(data));
+    }
+
+    // cargar desde localStorage
+    loadAccounts() {
+        const data = JSON.parse(localStorage.getItem("accounts") || "[]");
+        this.accounts = data.map(a => new Account(a.name, a.email, a.password));
+    }
+
+    
 }
 
 // CONTROLADOR GLOBAL
 const controller = Controller.getInstance();
-controller.addAccount("Test User", "test@email.com", "1234");
+if (!controller.accountExists("test@email.com")) {
+    controller.addAccount("User", "test@email.com", "1234");
+}

@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             const account = controller.login(email, password);
-            alert("Login successful. Welcome " + account.getName());
+            controller.setCurrentUser(account.getEmail());
             //redirigir
             window.location.href = "landingpage.html";
 

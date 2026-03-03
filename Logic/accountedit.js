@@ -1,45 +1,53 @@
+
 document.addEventListener("DOMContentLoaded", () => {
 
-    // usuario actualmente loggeado (para probar)
-    const currentUser = controller.getAccountByEmail("test@email.com");
-
-    // rellenar los campos con la info actual
-    document.getElementById("fullname").value = currentUser.getName();
-    document.getElementById("email").value = currentUser.getEmail();
-    // si quieres mostrar username también
-    // document.getElementById("username").value = currentUser.getUsername();
-
+    // datos
+    const fullnameInput = document.getElementById("fullname");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const confirmPasswordInput = document.getElementById("confirmPassword");
     const applyButton = document.getElementById("applyChangesButton");
+
     if (!applyButton) return;
 
-    applyButton.addEventListener("click", (event) => {
-        event.preventDefault(); // evitar que <a> haga navegación
+    // cargar datos del usuario
+    const currentUser = controller.getCurrentUser();
+    if (currentUser) {
+        fullnameInput.value = currentUser.getName();
+        emailInput.value = currentUser.getEmail();
+    } else {
+        alert("No current user");
+        window.location.href = "index.html";
+    }
 
-        const name = document.getElementById("fullname").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value;
-        const confirmPassword = document.getElementById("confirmPassword").value;
-
+    // listener del boton
+    applyButton.addEventListener("click", () => {
         try {
+    
+            const newName = fullnameInput.value.trim();
+            const newEmail = emailInput.value.trim();
+            const newPassword = passwordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+
             // validaciones
-            if (!name) throw new FieldIsEmptyException("Full name");
-            if (!email) throw new FieldIsEmptyException("Email");
-
-            if (password || confirmPassword) { // si se quiere cambiar la contraseña
-                if (!password) throw new FieldIsEmptyException("Password");
-                if (!confirmPassword) throw new FieldIsEmptyException("Confirm password");
-                if (password !== confirmPassword) throw new PasswordIncorrectException("Error: password and confirmation do not match.");
+            if (!newName) throw new FieldIsEmptyException("Full name");
+            if (!newEmail) throw new FieldIsEmptyException("Email");
+            if (newPassword || confirmPassword) {
+                if (!newPassword) throw new FieldIsEmptyException("New password");
+                if (!confirmPassword) throw new FieldIsEmptyException("Confirm new password");
+                if (newPassword !== confirmPassword)
+                    throw new PasswordIncorrectException("Passwords do not match");
             }
 
-            // verificar si el email ya está en uso por otro usuario
-            if (email !== currentUser.getEmail() && controller.accountExists(email)) {
-                throw new AccountExistsException();
-            }
+            // actualizar datos de current user
+            if (!currentUser) throw new AccountNotFoundException("No user is logged in");
 
-            // aplicar cambios
-            currentUser.setName(name);
-            currentUser.setEmail(email);
-            if (password) currentUser.setPassword(password);
+            currentUser.setName(newName);
+            currentUser.setEmail(newEmail);
+            if (newPassword) currentUser.setPassword(newPassword);
+
+            // guardar cambios
+            controller.saveAccounts();
 
             alert("Account updated successfully.");
             window.location.href = "landingpage.html";
@@ -47,7 +55,5 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (error) {
             alert(error.message);
         }
-
     });
-
 });
