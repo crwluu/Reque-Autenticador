@@ -1,25 +1,3 @@
-// auth.js
-
-// clase Account
-class Account {
-
-    constructor(name, email, password) {
-        this.name = name;
-        this.email = email;
-        this.password = password; // encriptar
-    }
-
-    // getters
-    getName() { return this.name; }
-    getEmail() { return this.email; }
-    getPassword() { return this.password; }
-
-    // setters
-    setName(name) { this.name = name; }
-    setEmail(Email) { this.Email = Email; }
-    setPassword(password) { this.password = password; }
-}
-
 // excepciones
 class AccountExistsException extends Error {
     constructor(msg = "Error: the user already exists.") {
@@ -51,6 +29,26 @@ class AccountNotFoundException extends Error {
 }
 
 
+// clase Account
+class Account {
+    constructor(name, email, password) {
+        this.name = name;
+        this.email = email;
+        this.password = password; 
+    }
+
+    // getters
+    getName() { return this.name; }
+    getEmail() { return this.email; }
+    getPassword() { return this.password; }
+
+    // setters
+    setName(name) { this.name = name; }
+    setEmail(email) { this.email = email; }
+    setPassword(password) { this.password = password; }
+}
+
+
 // controller
 class Controller {
     constructor() {
@@ -76,7 +74,7 @@ class Controller {
     }
 
     // agregar cuenta nueva
-    addAccount(email, password) {
+    addAccount(name, email, password) {
         if (this.accountExists(email)) throw new AccountExistsException();
         const account = new Account(name, email, password);
         this.accounts.push(account);
@@ -89,10 +87,25 @@ class Controller {
 
     // validar login
     isPasswordCorrect(email, password) {
-        const account = this.getAccountByEmail(Email);
+        const account = this.getAccountByEmail(email);
         return account.getPassword() === password;
+    }
+
+    // para login
+    login(email, password) {
+
+        if (!email) throw new FieldIsEmptyException("email");
+        if (!password) throw new FieldIsEmptyException("password");
+
+        const account = this.getAccountByEmail(email);
+
+        if (account.getPassword() !== password)
+            throw new PasswordIncorrectException();
+
+        return account;
     }
 }
 
-// instancia global
+// CONTROLADOR GLOBAL
 const controller = Controller.getInstance();
+controller.addAccount("Test User", "test@email.com", "1234");
