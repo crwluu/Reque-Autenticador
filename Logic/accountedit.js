@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // listener del boton
     applyButton.addEventListener("click", () => {
         try {
-    
+            let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,15}$/;
             const newName = fullnameInput.value.trim();
             const newEmail = emailInput.value.trim();
             const newPassword = passwordInput.value;
@@ -32,8 +33,10 @@ document.addEventListener("DOMContentLoaded", () => {
             // validaciones
             if (!newName) throw new FieldIsEmptyException("Full name");
             if (!newEmail) throw new FieldIsEmptyException("Email");
+            if (!emailRegex.test(newEmail)) throw new InvalidEmailException();
             if (newPassword || confirmPassword) {
                 if (!newPassword) throw new FieldIsEmptyException("New password");
+                if (!passwordRegex.test(newPassword)) throw new InvalidPasswordException();
                 if (!confirmPassword) throw new FieldIsEmptyException("Confirm new password");
                 if (newPassword !== confirmPassword)
                     throw new PasswordIncorrectException("Passwords do not match");

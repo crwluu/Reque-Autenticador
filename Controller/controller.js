@@ -28,6 +28,20 @@ class AccountNotFoundException extends Error {
     }
 }
 
+class InvalidEmailException extends Error {
+    constructor(msg = "Error: invalid e-mail address.") {
+        super(msg);
+        this.name = "InvalidEmailException";
+    }
+}
+
+class InvalidPasswordException extends Error {
+    constructor(msg = "Error: the password must consist of at least one upper-case letter, one lower-case letter, one number, and one special character. It should be between 8 and 16 characters long.") {
+        super(msg);
+        this.name = "InvalidPasswordException";
+    }
+}
+
 
 // clase Account
 class Account {
