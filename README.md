@@ -1,11 +1,11 @@
-Instituto Tecnológico de Costa Rica
-Ingeniería en Computación
-I Semestre, 2026
-Curso: Requerimientos de Software
-Profesor: Luis Arturo Montoya Poitevien
-Estudiantes:
-  Aradia Aguilar Vargas
-  Luan Valverde Villalobos
+Instituto Tecnológico de Costa Rica <br/>
+Ingeniería en Computación <br/>
+I Semestre, 2026 <br/>
+Curso: Requerimientos de Software <br/>
+Profesor: Luis Arturo Montoya Poitevien <br/>
+Estudiantes: <br/>
+< Aradia Aguilar Vargas <br/>
+< Luan Valverde Villalobos <br/>
 
 Caso de estudio: Autenticador
 
