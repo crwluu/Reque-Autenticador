@@ -7,7 +7,7 @@ Estudiantes:
   Aradia Aguilar Vargas
   Luan Valverde Villalobos
 
-Caso de estudio 1: Autenticador
+Caso de estudio: Autenticador
 
 Requerimientos del programa:
 * Gestión de usuarios
@@ -21,6 +21,5 @@ Un prototipo NO es un programa completo.
 
 Entregable:
 * Se debe entregar un documento con la descripción, alcance, objetivos, requerimientos funcionales y no funcionales del prototipo, junto con el ejecutable.
-* Ambos deben depositarse en un sitio en la nube e invitar al correo [lmontoya@itcr.ac.cr](mailto:lmontoya@itcr.ac.cr).
+* Ambos deben depositarse en un sitio en la nube.
 * El programa y la documentación deben ser elaborados por dos desarrolladores.
-Fecha de entrega: 3 de marzo.
