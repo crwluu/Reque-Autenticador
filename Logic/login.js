@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const account = controller.login(email, password);
             controller.setCurrentUser(account.getEmail());
             //redirigir
-            window.location.href = "UI/landingpage.html";
+            window.location.href = "../UI/landingpage.html";
 
         } catch (error) {alert(error.message);}
     });
