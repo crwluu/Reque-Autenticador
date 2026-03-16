@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             alert("Account created. You can now log in.");
 
-            window.location.href = "index.html";
+            window.location.href = "../index.html";
 
         } catch (error) {alert(error.message);}
     });

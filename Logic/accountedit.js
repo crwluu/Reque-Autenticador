@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         emailInput.value = currentUser.getEmail();
     } else {
         alert("No current user");
-        window.location.href = "index.html";
+        window.location.href = "../index.html";
     }
 
     // listener del boton
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
             controller.saveAccounts();
 
             alert("Account updated successfully.");
-            window.location.href = "landingpage.html";
+            window.location.href = "../UI/landingpage.html";
 
         } catch (error) {
             alert(error.message);
