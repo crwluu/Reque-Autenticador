@@ -7,9 +7,16 @@ class AccountExistsException extends Error {
 }
 
 class PasswordIncorrectException extends Error {
-    constructor(msg = "Error: the password is incorrect.") {
+    constructor(msg = "Error: Invalid email or password.") {
         super(msg);
         this.name = "PasswordIncorrectException";
+    }
+}
+
+class AccountNotFoundException extends Error {
+    constructor(msg = "Error: Invalid email or password.") {
+        super(msg);
+        this.name = "AccountNotFoundException";
     }
 }
 
@@ -18,13 +25,6 @@ class FieldIsEmptyException extends Error {
         super(`Error: the ${field} field cannot be empty.`); 
         this.name = "FieldIsEmptyException";
         this.field = field;
-    }
-}
-
-class AccountNotFoundException extends Error {
-    constructor(msg = "Error: the given user was not found.") {
-        super(msg);
-        this.name = "AccountNotFoundException";
     }
 }
 
