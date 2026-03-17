@@ -18,8 +18,3 @@ Requerimientos del programa:
 * Seguridad
 
 Un prototipo NO es un programa completo.
-
-Entregable:
-* Se debe entregar un documento con la descripción, alcance, objetivos, requerimientos funcionales y no funcionales del prototipo, junto con el ejecutable.
-* Ambos deben depositarse en un sitio en la nube.
-* El programa y la documentación deben ser elaborados por dos desarrolladores.
